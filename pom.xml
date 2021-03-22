@@ -6,7 +6,7 @@
     <artifactId>mellifluent-spoon</artifactId>
     <groupId>com.github.Treehopper</groupId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <junit5.version>5.7.1</junit5.version>
@@ -124,25 +124,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.2.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <phase>verify</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <fork>false</fork>
-                    <failOnError>true</failOnError>
-                    <excludeFilterFile>spotbugs-ignore.xml</excludeFilterFile>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
