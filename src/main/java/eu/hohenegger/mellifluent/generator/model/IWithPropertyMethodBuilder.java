@@ -33,7 +33,6 @@ import spoon.reflect.declaration.CtParameter;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.factory.Factory;
 import spoon.reflect.reference.CtLocalVariableReference;
-import spoon.reflect.reference.CtTypeReference;
 
 public interface IWithPropertyMethodBuilder {
 
@@ -43,9 +42,7 @@ public interface IWithPropertyMethodBuilder {
         withPropertyMethod.setSimpleName("with" + Util.capitalizeFirstLetter(getPropertyField().getSimpleName()));
         CtParameter<Object> withParameter = getTypeFactory().createParameter();
         withParameter.setSimpleName(getPropertyField().getSimpleName());
-        CtTypeReference<Object> withParameterRef = getTypeFactory().createTypeReference();
-        withParameterRef.setSimpleName(getPropertyField().getType().getSimpleName()); //TODO: why cant we use the type directly?
-        withParameter.setType(withParameterRef);
+        withParameter.setType(getPropertyField().getType().clone()); //TODO: remove clone
         withPropertyMethod.addParameter(withParameter);
         withPropertyMethod.setType(getBuilder().getReference());
 
