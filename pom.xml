@@ -15,7 +15,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mellifluent.maven.plugin.version>1.3.0</mellifluent.maven.plugin.version>
+        <mellifluent.maven.plugin.version>1.5.0-SNAPSHOT</mellifluent.maven.plugin.version>
         <spoon.version>7.6.0</spoon.version>
     </properties>
 
@@ -57,17 +57,7 @@
                 <version>${mellifluent.maven.plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>assisted-generate-fluent</id>
-                        <goals>
-                            <goal>assisted-generate-fluent</goal>
-                        </goals>
-                        <configuration>
-                            <sourcePackage>eu.hohenegger.mellifluent.generator.model</sourcePackage>
-                            <targetPackage>eu.hohenegger.mellifluent.generator.api</targetPackage>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-fluent</id>
+                        <id>generate-fluent-declaration</id>
                         <goals>
                             <goal>generate-fluent</goal>
                         </goals>
@@ -75,27 +65,59 @@
                             <excludeGroupIds>com.fasterxml.jackson,com.martiansoftware,org.eclipse.jdt,org.eclipse.platform,log4j,commons-io,org.apache.maven,org.codehaus.plexus,org.apache.commons,org.tukaani,org.apache.commons,org.apache.maven.shared,org.apache.maven.shared,org.codehaus.plexus</excludeGroupIds>
                             <packageName>spoon.support.reflect.declaration</packageName>
                             <targetPackage>eu.hohenegger.mellifluent.spoon.reflect.declaration</targetPackage>
+                            <excludes>
+                                <exclude>CtCompilationUnitImpl</exclude>
+                                <!-- Set<CtTypeReference<? extends Throwable>> ThrownTypes vs Set ThrownTypes  -->
+                                <exclude>CtAnonymousExecutableImpl</exclude>
+                            </excludes>
                         </configuration>
                     </execution>
-                </executions>
-            </plugin>
-            <!-- Workaround: CtCompilationUnitImplBuilder is generated with an unresolved reference to java.io.File -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
                     <execution>
-                        <phase>generate-sources</phase>
+                        <id>generate-fluent-reference</id>
                         <goals>
-                            <goal>run</goal>
+                            <goal>generate-fluent</goal>
                         </goals>
                         <configuration>
-                            <target>
-                                <delete>
-                                    <fileset dir="${project.build.directory}/generated-sources/java/eu/hohenegger/mellifluent/spoon/reflect/declaration" includes="CtCompilationUnitImplBuilder.java" />
-                                </delete>
-                            </target>
+                            <excludeGroupIds>com.fasterxml.jackson,com.martiansoftware,org.eclipse.jdt,org.eclipse.platform,log4j,commons-io,org.apache.maven,org.codehaus.plexus,org.apache.commons,org.tukaani,org.apache.commons,org.apache.maven.shared,org.apache.maven.shared,org.codehaus.plexus</excludeGroupIds>
+                            <packageName>spoon.support.reflect.reference</packageName>
+                            <targetPackage>eu.hohenegger.mellifluent.spoon.reflect.reference</targetPackage>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-fluent-code</id>
+                        <goals>
+                            <goal>generate-fluent</goal>
+                        </goals>
+                        <configuration>
+                            <excludeGroupIds>com.fasterxml.jackson,com.martiansoftware,org.eclipse.jdt,org.eclipse.platform,log4j,commons-io,org.apache.maven,org.codehaus.plexus,org.apache.commons,org.tukaani,org.apache.commons,org.apache.maven.shared,org.apache.maven.shared,org.codehaus.plexus</excludeGroupIds>
+                            <packageName>spoon.support.reflect.code</packageName>
+                            <targetPackage>eu.hohenegger.mellifluent.spoon.reflect.code</targetPackage>
+                            <excludes>
+                                <!-- NPE in spoon -->
+                                <exclude>CtSuperAccessImpl</exclude>
+                                <!-- CtInvocationImplBuilder.java:[152,26] incompatible types: T cannot be converted to spoon.reflect.code.CtExpression -->
+                                <exclude>CtInvocationImpl</exclude>
+                                <!-- CtJavaDocTagImplBuilder.java:[108,21] incompatible types: java.lang.String cannot be converted to spoon.reflect.code.CtJavaDocTag.TagType  -->
+                                <exclude>CtJavaDocTagImpl</exclude>
+                                <!-- type error setTarget, setParent -->
+                                <exclude>CtNewClassImpl</exclude>
+                                <exclude>CtCaseImpl</exclude>
+                                <!-- T Value -->
+                                <exclude>CtLiteralImpl</exclude>
+                                <exclude>CtExecutableReferenceExpressionImpl</exclude>
+                                <exclude>CtExecutableReferenceExpressionImpl</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <id>assisted-generate-fluent</id>
+                        <goals>
+                            <goal>assisted-generate-fluent</goal>
+                        </goals>
+                        <configuration>
+                            <sourcePackage>eu.hohenegger.mellifluent.generator.model</sourcePackage>
+                            <targetPackage>eu.hohenegger.mellifluent.generator.api</targetPackage>
                         </configuration>
                     </execution>
                 </executions>
