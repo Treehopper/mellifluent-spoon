@@ -64,7 +64,7 @@
                         <configuration>
                             <excludeGroupIds>com.fasterxml.jackson,com.martiansoftware,org.eclipse.jdt,org.eclipse.platform,log4j,commons-io,org.apache.maven,org.codehaus.plexus,org.apache.commons,org.tukaani,org.apache.commons,org.apache.maven.shared,org.apache.maven.shared,org.codehaus.plexus</excludeGroupIds>
                             <packageName>spoon.support.reflect.declaration</packageName>
-                            <targetPackage>eu.hohenegger.mellifluent.spoon.reflect.declaration</targetPackage>
+                            <targetPackage>eu.hohenegger.mellifluent.spoon.support.reflect.declaration</targetPackage>
                             <excludes>
                                 <exclude>CtCompilationUnitImpl</exclude>
                                 <!-- Set<CtTypeReference<? extends Throwable>> ThrownTypes vs Set ThrownTypes  -->
@@ -80,7 +80,7 @@
                         <configuration>
                             <excludeGroupIds>com.fasterxml.jackson,com.martiansoftware,org.eclipse.jdt,org.eclipse.platform,log4j,commons-io,org.apache.maven,org.codehaus.plexus,org.apache.commons,org.tukaani,org.apache.commons,org.apache.maven.shared,org.apache.maven.shared,org.codehaus.plexus</excludeGroupIds>
                             <packageName>spoon.support.reflect.reference</packageName>
-                            <targetPackage>eu.hohenegger.mellifluent.spoon.reflect.reference</targetPackage>
+                            <targetPackage>eu.hohenegger.mellifluent.spoon.support.reflect.reference</targetPackage>
                         </configuration>
                     </execution>
                     <execution>
@@ -91,7 +91,7 @@
                         <configuration>
                             <excludeGroupIds>com.fasterxml.jackson,com.martiansoftware,org.eclipse.jdt,org.eclipse.platform,log4j,commons-io,org.apache.maven,org.codehaus.plexus,org.apache.commons,org.tukaani,org.apache.commons,org.apache.maven.shared,org.apache.maven.shared,org.codehaus.plexus</excludeGroupIds>
                             <packageName>spoon.support.reflect.code</packageName>
-                            <targetPackage>eu.hohenegger.mellifluent.spoon.reflect.code</targetPackage>
+                            <targetPackage>eu.hohenegger.mellifluent.spoon.support.reflect.code</targetPackage>
                             <excludes>
                                 <!-- NPE in spoon -->
                                 <exclude>CtSuperAccessImpl</exclude>
