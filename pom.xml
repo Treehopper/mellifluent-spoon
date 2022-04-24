@@ -23,7 +23,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <mellifluent.maven.plugin.version>1.6.0</mellifluent.maven.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spoon.version>7.6.0</spoon.version>
+    <spoon.version>10.1.1</spoon.version>
   </properties>
 
   <dependencies>
