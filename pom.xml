@@ -202,6 +202,7 @@
             <includes>
               <include>src/main/java/**/*.java</include>
               <include>src/test/java/**/*.java</include>
+              <include>target/generated-sources/java/**/*.java</include>
             </includes>
             <importOrder></importOrder>
             <removeUnusedImports></removeUnusedImports>
@@ -237,7 +238,7 @@
             <goals>
               <goal>apply</goal>
             </goals>
-            <phase>clean</phase>
+            <phase>process-sources</phase>
           </execution>
         </executions>
       </plugin>
