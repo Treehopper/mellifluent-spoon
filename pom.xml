@@ -21,7 +21,7 @@
     <junit5.version>5.7.1</junit5.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <mellifluent.maven.plugin.version>1.6.0</mellifluent.maven.plugin.version>
+    <mellifluent.maven.plugin.version>1.11.0</mellifluent.maven.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spoon.version>7.6.0</spoon.version>
   </properties>
