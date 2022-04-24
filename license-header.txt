@@ -17,21 +17,3 @@
  * limitations under the License.
  * #L%
  */
-package eu.hohenegger.mellifluent.generator.model;
-
-import spoon.reflect.code.CtVariableAccess;
-import spoon.reflect.factory.Factory;
-import spoon.reflect.reference.CtFieldReference;
-
-public interface IFieldWriteBuilder {
-
-  default CtVariableAccess<Object> build() {
-    CtFieldReference<Object> fieldReference = getTypeFactory().createFieldReference();
-    fieldReference.setSimpleName(getFieldName());
-    return getTypeFactory().createVariableRead(fieldReference, false);
-  }
-
-  String getFieldName();
-
-  Factory getTypeFactory();
-}

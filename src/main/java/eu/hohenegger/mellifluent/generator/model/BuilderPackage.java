@@ -1,8 +1,8 @@
 /*-
  * #%L
- * mellifluent-core
+ * mellifluent-spoon
  * %%
- * Copyright (C) 2020 - 2021 Max Hohenegger <mellifluent@hohenegger.eu>
+ * Copyright (C) 2020 - 2022 Max Hohenegger <mellifluent-spoon@hohenegger.eu>
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,32 +19,32 @@
  */
 package eu.hohenegger.mellifluent.generator.model;
 
-
 import spoon.reflect.declaration.CtPackage;
 import spoon.reflect.factory.Factory;
 
-
 public class BuilderPackage {
-    private String packageName;
-    private Factory typeFactory;
+  private String packageName;
+  private Factory typeFactory;
 
-    public String getPackageName() {
-        return packageName;
-    }
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
-    }
-    public Factory getTypeFactory() {
-        return typeFactory;
-    }
-    public void setTypeFactory(Factory typeFactory) {
-        this.typeFactory = typeFactory;
-    }
+  public String getPackageName() {
+    return packageName;
+  }
 
-    public CtPackage build() {
-        CtPackage result = getTypeFactory().createPackage();
-        //TODO
-        return result;
-    }
+  public void setPackageName(String packageName) {
+    this.packageName = packageName;
+  }
+
+  public Factory getTypeFactory() {
+    return typeFactory;
+  }
+
+  public void setTypeFactory(Factory typeFactory) {
+    this.typeFactory = typeFactory;
+  }
+
+  public CtPackage build() {
+    CtPackage result = getTypeFactory().createPackage();
+    // TODO
+    return result;
+  }
 }
-

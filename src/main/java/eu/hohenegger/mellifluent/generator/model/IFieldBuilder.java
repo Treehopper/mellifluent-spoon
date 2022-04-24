@@ -1,8 +1,8 @@
 /*-
  * #%L
- * mellifluent-core
+ * mellifluent-spoon
  * %%
- * Copyright (C) 2020 - 2021 Max Hohenegger <mellifluent@hohenegger.eu>
+ * Copyright (C) 2020 - 2022 Max Hohenegger <mellifluent-spoon@hohenegger.eu>
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,16 +27,17 @@ import spoon.reflect.reference.CtTypeReference;
 
 public interface IFieldBuilder {
 
-    default CtField<Object>  build() {
-        CtField<Object> ctField = getTypeFactory().createField();
-        ctField.addModifier(PRIVATE);
-        ctField.setType(getGetterDeclaringType());
-        ctField.setSimpleName(getSimpleName());
-        return ctField;
-    }
+  default CtField<Object> build() {
+    CtField<Object> ctField = getTypeFactory().createField();
+    ctField.addModifier(PRIVATE);
+    ctField.setType(getGetterDeclaringType());
+    ctField.setSimpleName(getSimpleName());
+    return ctField;
+  }
 
-    CtTypeReference getGetterDeclaringType();
-    String getSimpleName();
+  CtTypeReference getGetterDeclaringType();
 
-    Factory getTypeFactory();
+  String getSimpleName();
+
+  Factory getTypeFactory();
 }
